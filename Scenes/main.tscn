@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw0rmi6hf1vui"]
+
+[ext_resource type="PackedScene" uid="uid://c4w77oj0bncle" path="res://Scenes/player_paddle.tscn" id="1_7qv3a"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_qhtdo"]
+[ext_resource type="PackedScene" uid="uid://btpboh8m4w5dk" path="res://Scenes/scoring_wall.tscn" id="3_l8i2q"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ys7w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_munwe"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_qhtdo")
+
+[node name="PlayerPaddle1" parent="." instance=ExtResource("1_7qv3a")]
+position = Vector2(10, 240)
+
+[node name="PlayerPaddle2" parent="." instance=ExtResource("1_7qv3a")]
+position = Vector2(844, 240)
+is_player_two = true
+
+[node name="WorldBounds" type="Node" parent="."]
+
+[node name="NorthBounds" type="StaticBody2D" parent="WorldBounds"]
+position = Vector2(427, 0)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/NorthBounds"]
+position = Vector2(-5.07036e-06, 2)
+shape = SubResource("WorldBoundaryShape2D_8ys7w")
+
+[node name="SouthBounds" type="StaticBody2D" parent="WorldBounds"]
+position = Vector2(427, 480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBounds/SouthBounds"]
+position = Vector2(0, 2)
+shape = SubResource("WorldBoundaryShape2D_8ys7w")
+
+[node name="ScoringWallEast" parent="WorldBounds" instance=ExtResource("3_l8i2q")]
+is_player_one_scoring_wall = true
+
+[node name="ScoringWallWest" parent="WorldBounds" instance=ExtResource("3_l8i2q")]
+position = Vector2(-2, 240)
+rotation = 1.5708
+
+[node name="Lines" type="Node" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Lines"]
+position = Vector2(427, 38)
+scale = Vector2(10, 38)
+mesh = SubResource("BoxMesh_munwe")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Lines"]
+position = Vector2(427, 134)
+scale = Vector2(10, 38)
+mesh = SubResource("BoxMesh_munwe")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Lines"]
+position = Vector2(427, 230)
+scale = Vector2(10, 38)
+mesh = SubResource("BoxMesh_munwe")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Lines"]
+position = Vector2(427, 326)
+scale = Vector2(10, 38)
+mesh = SubResource("BoxMesh_munwe")
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Lines"]
+position = Vector2(427, 422)
+scale = Vector2(10, 38)
+mesh = SubResource("BoxMesh_munwe")

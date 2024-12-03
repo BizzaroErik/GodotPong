@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://btpboh8m4w5dk"]
+
+[ext_resource type="Script" path="res://Scenes/net.gd" id="1_v6qge"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ys7w"]
+
+[node name="ScoringWall" type="Area2D"]
+position = Vector2(857, 240)
+rotation = 4.71239
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_v6qge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_8ys7w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

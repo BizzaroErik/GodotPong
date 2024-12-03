@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://81vhmy48mtjc"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_pbe0c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6wbp3"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gly20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ueek"]
+radius = 15.0
+
+[node name="Ball" type="RigidBody2D" groups=["ball"]]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_6wbp3")
+gravity_scale = 0.0
+angular_damp_mode = 1
+script = ExtResource("1_pbe0c")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-1.19209e-07, 1.54972e-06)
+scale = Vector2(30, 30)
+mesh = SubResource("SphereMesh_gly20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1ueek")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

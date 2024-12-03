@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4w77oj0bncle"]
+
+[ext_resource type="Script" path="res://Scripts/player_paddle.gd" id="1_cet0t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gofjn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptrhq"]
+size = Vector2(20, 120)
+
+[node name="PlayerPaddle" type="CharacterBody2D"]
+platform_floor_layers = 4294901761
+script = ExtResource("1_cet0t")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2(20, 120)
+mesh = SubResource("BoxMesh_gofjn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+shape = SubResource("RectangleShape2D_ptrhq")
