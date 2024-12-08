@@ -1,23 +1,27 @@
-class_name PlayerPaddle
+class_name Paddle
 extends CharacterBody2D
 
-@export var is_player_two: bool
-var score: int = 0
+var is_other_player: bool
 const SPEED = 300.0
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	
 	var direction
-	if is_player_two:
+	if is_other_player:
 		direction = Input.get_axis("ui2_up", "ui2_down")
 	else:
 		direction = Input.get_axis("ui1_up", "ui1_down")
+	
+	if Input.is_action_just_pressed("ui1_right"):
+		paddle_shape_state()
 		
 	if direction:
 		velocity.y = direction * SPEED
 	else:
 		velocity.y = move_toward(0, velocity.y, SPEED)
 
-	move_and_collide(velocity * delta)
+	move_and_slide()
+
+
+func paddle_shape_state() -> void:
+	pass
+	
