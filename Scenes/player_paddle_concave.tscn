@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8ii0nuxwfaq"]
+
+[ext_resource type="Script" path="res://Scripts/player_paddle.gd" id="1_84lf3"]
+
+[node name="PlayerPaddle" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_84lf3")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(20, -80, -20, -80, -20, 80, 20, 80, 13, 72, 8, 62, 3, 34, 1, 18, 0, 0, 1, -19, 3, -34, 9, -58, 13, -70)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-20, -80, -20, 80, 20, 80, 13, 72, 8, 62, 3, 34, 1, 18, 0, 0, 1, -19, 3, -34, 9, -58, 13, -70, 20, -80)

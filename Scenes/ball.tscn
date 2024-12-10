@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://81vhmy48mtjc"]
+[gd_scene load_steps=6 format=3 uid="uid://81vhmy48mtjc"]
 
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_pbe0c"]
 
@@ -10,6 +10,10 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ueek"]
 radius = 15.0
+
+[sub_resource type="Curve" id="Curve_alhw4"]
+_data = [Vector2(0, 0.972612), 0.0, 0.0, 0, 0, Vector2(0.501901, 0.666096), 0.0, 0.0, 0, 0, Vector2(0.998099, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Ball" type="RigidBody2D" groups=["ball"]]
 mass = 0.001
@@ -26,6 +30,20 @@ shape = SubResource("CircleShape2D_1ueek")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 35
+lifetime = 0.8
+speed_scale = 2.0
+emission_shape = 1
+emission_sphere_radius = 12.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 8.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_alhw4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,6 +5,7 @@ extends Node
 @export var is_other_player: bool
 var flat_paddle: PackedScene = preload("res://Scenes/player_paddle_rectangle.tscn")
 var round_paddle: PackedScene = preload("res://Scenes/player_paddle_sphere.tscn")
+var concave_paddle: PackedScene = preload("res://Scenes/player_paddle_concave.tscn")
 var current_paddle: Paddle
 var score: int = 0
 
@@ -43,6 +44,11 @@ func set_paddle(new_paddle: Paddle):
 	
 func add_flat_paddle():
 	var new_paddle = flat_paddle.instantiate()
+	set_paddle_position(new_paddle, current_paddle.position.y, current_paddle.velocity.y)
+	set_paddle(new_paddle)
+	
+func add_concave_paddle():
+	var new_paddle = concave_paddle.instantiate()
 	set_paddle_position(new_paddle, current_paddle.position.y, current_paddle.velocity.y)
 	set_paddle(new_paddle)
 
