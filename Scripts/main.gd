@@ -8,7 +8,7 @@ var ball: PackedScene = preload("res://Scenes/ball.tscn")
 @onready var ui: Control = get_node("UI")
 
 func _ready() -> void:
-	ball_spawner()
+	ball_spawner(player1.get_paddle().position)
 
 func score(is_player_one: bool):
 	if is_player_one:
@@ -26,16 +26,16 @@ func score(is_player_one: bool):
 	else:
 		receiving_player = player1
 	
-	ball_spawner()
+	ball_spawner(receiving_player.get_paddle().position)
 
 func check_winner(player: Player):
 	if player.score >= winning_score:
 		$UI.game_finished(player)
 		
-func ball_spawner():
+func ball_spawner(target_position: Vector2):
 	var next_ball: Ball = ball.instantiate()
 	self.add_child(next_ball)
-	pass
+	next_ball.set_velocity_towards_player(target_position)
 
 func set_score(player: Player) -> void:
 	player.score += 1

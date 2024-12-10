@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://x7pra5gdj7eg"]
+[gd_scene load_steps=5 format=3 uid="uid://x7pra5gdj7eg"]
 
 [ext_resource type="Script" path="res://Scripts/player_paddle.gd" id="1_vekh7"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjxmm"]
+albedo_color = Color(1, 0.333333, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_805ql"]
+material = SubResource("StandardMaterial3D_gjxmm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jushd"]
 size = Vector2(40, 160)
@@ -16,4 +20,5 @@ scale = Vector2(40, 160)
 mesh = SubResource("BoxMesh_805ql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+visible = false
 shape = SubResource("RectangleShape2D_jushd")

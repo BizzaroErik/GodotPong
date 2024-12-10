@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_qhtdo"]
 [ext_resource type="PackedScene" uid="uid://btpboh8m4w5dk" path="res://Scenes/scoring_wall.tscn" id="3_l8i2q"]
 [ext_resource type="PackedScene" uid="uid://bnl7bytt2uxnr" path="res://Scenes/ui.tscn" id="3_plcu0"]
-[ext_resource type="PackedScene" uid="uid://d2b2oclx57l3" path="res://Scenes/player_controller.tscn" id="5_oxy7b"]
+[ext_resource type="PackedScene" uid="uid://d2b2oclx57l3" path="res://Scenes/player.tscn" id="5_oxy7b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8ys7w"]
 

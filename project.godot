@@ -68,3 +68,7 @@ ui2_left={
 
 2d/default_gravity_vector=Vector2(0, 0)
 2d/default_linear_damp=0.0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

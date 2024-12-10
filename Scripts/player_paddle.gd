@@ -4,6 +4,10 @@ extends CharacterBody2D
 var is_other_player: bool
 const SPEED = 300.0
 
+func _ready() -> void:
+	var mesh_material: Material = get_node("MeshInstance2D").material
+
+		
 func _physics_process(delta: float) -> void:
 	var direction
 	if is_other_player:

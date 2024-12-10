@@ -1,15 +1,18 @@
 class_name Ball
 extends RigidBody2D
 
-@export var velocity: Vector2 = Vector2(-200, 0)
+var speed: float = 200.0
 
 func _ready() -> void:
-	position.x = 427
-	position.y = 240
-	linear_velocity = velocity
+	var window: Vector2 = get_window().get_viewport().size
+	position.x = window.x/2
+	position.y = window.y/2
+	
 
-func _on_body_entered(body: Node) -> void:
-	print("body entered!!!")
-	print(body.name)
-	print(str(body.position.x))
-	print(str(body.position.y))
+func set_velocity_towards_player(player_position: Vector2):
+	var direction = player_position - position
+	direction = direction.normalized()
+	linear_velocity = direction * speed
+
+func _on_timer_timeout() -> void:
+	linear_velocity *= 1.1
