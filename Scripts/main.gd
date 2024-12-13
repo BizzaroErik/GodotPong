@@ -36,7 +36,6 @@ func check_winner(player: Player):
 		$UI.game_finished(player)
 		
 func ball_spawner(target_position: Vector2):
-	print(get_tree().get_nodes_in_group("ball").size())
 	var next_ball: Ball = ball.instantiate()
 	self.add_child(next_ball)
 	next_ball.set_velocity_towards_player(target_position)

@@ -11,8 +11,7 @@ var score: int = 0
 
 func _ready() -> void:
 	var new_paddle = flat_paddle.instantiate()
-	var window: Vector2 = get_window().get_viewport().size
-	set_paddle_position(new_paddle, window.y/2, 0.0)
+	set_paddle_position(new_paddle, 240, 0.0)
 	current_paddle = new_paddle
 	self.add_child(current_paddle)
 	current_paddle.is_other_player = is_other_player
@@ -58,11 +57,10 @@ func add_round_paddle():
 	set_paddle(new_paddle)
 
 func set_paddle_position(new_paddle: Paddle, position: float, speed: float):
-	var window: Vector2 = get_window().get_viewport().size
 	new_paddle.position.y = position
 	new_paddle.velocity.y = speed
 	
 	if is_other_player:
-		new_paddle.position.x = window.x - 10
+		new_paddle.position.x = 854 - 10
 	else:
 		new_paddle.position.x = 10
